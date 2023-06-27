@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[47]:
+# Import Packages
 
 
 import pandas as pd
@@ -12,50 +12,50 @@ import warnings
 warnings.filterwarnings(action='ignore')
 
 
-# In[4]:
+# Read file
 
 
 df = pd.read_csv(r'C:\Users\703310783\OneDrive - Genpact\Documents\DE - Course\states_current.csv')
 
 
-# In[5]:
+# Read head files:
 
 
 df.head()
 
 
-# In[6]:
+# Descrribe the dataset:
 
 
 df.describe()
 
 
-# In[7]:
+# Describe the datatypes:
 
 
 df.dtypes
 
 
-# In[8]:
+# Remove duplicates:
 
 
 duplicate_rows = df[df.duplicated()]
 duplicate_rows
 
 
-# In[9]:
+# Analyse null values:
 
 
 df.isnull().sum()
 
 
-# In[10]:
+# shape of the dataset:
 
 
 df.shape
 
 
-# In[11]:
+# Remove empty columns:
 
 
 columns_to_remove = ['pending', 'inIcuCumulative','grade','dataQualityGrade','positiveTestsViral',
@@ -79,26 +79,20 @@ columns_to_remove = ['pending', 'inIcuCumulative','grade','dataQualityGrade','po
 df = df.drop(columns_to_remove, axis=1)
 
 
-# In[21]:
+# View list of columns:
 
 
 df.columns
 
 
-# In[16]:
-
-
-df.isnull().sum()
-
-
-# In[51]:
+# Fill the values
 
 
 df_impute_mean = df.fillna(df.mean())
 df_impute_mean.head()
 
 
-# In[50]:
+# View total results by states:
 
 
 sns.barplot(x = 'state', y = 'totalTestResults', data = df)
@@ -108,19 +102,10 @@ plt.title('Barplot')
 plt.show()
 
 
-# In[55]:
+# View totalTestResults by totalTestResultsSource :
 
 
 sns.barplot(x = 'totalTestResultsSource', y = 'totalTestResults', data = df)
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
 
 
 
